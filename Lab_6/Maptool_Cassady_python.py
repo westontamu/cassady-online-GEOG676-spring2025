@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import arcpy
+import time
 
 
 class Toolbox(object):
@@ -141,6 +142,6 @@ class GraduatedColorsRenderer(object):
         time.sleep(readTime)
         arcpy.AddMessage("Saving...")
 
-        project.saveAQCopy(parameters[2].valueAsText + "\\" + parameters[3].valueAsText + ".aprx")
+        project.saveACopy(parameters[2].valueAsText + "\\" + parameters[3].valueAsText + ".aprx")
         # Param 2 is the folder location and param 3 is the name of the new project
         return
