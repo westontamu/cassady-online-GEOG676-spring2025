@@ -120,7 +120,7 @@ class GraduatedColorsRenderer(object):
                         symbology.updateRenderer('GraduatedColorsRenderer')
 
                         # Tell arcpy which field we want to base our chloropleth off of
-                        symbology.renderer.classificationsField = "Shape_Area"
+                        symbology.renderer.classificationField = "Shape_Area"
 
                         # Set how many classes we'll have for the map
                         symbology.renderer.breakCount = 5

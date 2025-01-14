@@ -120,7 +120,7 @@ class GraduatedColorsRenderer(object):
                         symbology.updateRenderer('GraduatedColorsRenderer')
 
                         # Tell arcpy which field we want to base our chloropleth off of
-                        symbology.renderer.classificationsField = "Shape_Area"
+                        symbology.renderer.classificationField = "Shape_Area"
 
                         # Set how many classes we'll have for the map
                         symbology.renderer.breakCount = 5
@@ -134,7 +134,7 @@ class GraduatedColorsRenderer(object):
                         arcpy.AddMessage("Finish Generating Layer...")
                     else:
                         arcpy.AddMessage("NO layers found")
-                        
+
         # Increment Progressor
         arcpy.SetProgressorPosition(start + step*3) # now is 99% completed
         arcpy.SetProgressorLabel("Saving...")
