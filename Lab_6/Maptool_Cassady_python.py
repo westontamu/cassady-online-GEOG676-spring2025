@@ -43,7 +43,6 @@ class GraduatedColorsRenderer(object):
             displayName="Output Location",
             name="OutputLocation",
             datatype="DEFolder",
-            #parameterType="Required",
             direction="Input"
         )
 
@@ -85,7 +84,6 @@ class GraduatedColorsRenderer(object):
         # Setup Progressor
         arcpy.SetProgressor("step", "Validating Project File...", start, max, step)
         time.sleep(readTime) #pause the execution for 2.5 seconds
-
         # Add Message to the Results Pane
         arcpy.AddMessage("Validating Project File...")
 
@@ -96,7 +94,7 @@ class GraduatedColorsRenderer(object):
         campus = project.listMaps('Map')[0]
 
         # Increment Progressor
-        arcpy.SetProgressorPosition(start + step)
+        arcpy.SetProgressorPosition(start + step) # now is 33% completed
         arcpy.SetProgressorLabel("Finding your map layer...")
         time.sleep(readTime)
         arcpy.AddMessage("Finding your map layer...")
@@ -135,7 +133,8 @@ class GraduatedColorsRenderer(object):
 
                         arcpy.AddMessage("Finish Generating Layer...")
                     else:
-                        print("NO layers found")
+                        arcpy.AddMessage("NO layers found")
+                        
         # Increment Progressor
         arcpy.SetProgressorPosition(start + step*3) # now is 99% completed
         arcpy.SetProgressorLabel("Saving...")
