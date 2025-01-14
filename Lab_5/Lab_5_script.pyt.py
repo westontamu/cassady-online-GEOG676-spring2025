@@ -53,7 +53,7 @@ class Tool(object):
         param4 = arcpy.Parameter(
             displayName="Campus GDB",
             name="Campus GDB",
-            datatype="DEType",
+            datatype="DEWorkspace",
             parameterType="Required",
             direction="Input"
         )
@@ -92,7 +92,7 @@ class Tool(object):
         arcpy.CreateFileGDB_management(folder_path, gdb_name)
 
         csv_path = parameters[2].valueAsText
-        garage_layer_name = parameters[3].valueAsTexas
+        garage_layer_name = parameters[3].valueAsText
         garages = arcpy.MakeXYEventLayer_management(csv_path, 'X', 'Y', garage_layer_name)
 
         input_layer = garages
@@ -108,7 +108,7 @@ class Tool(object):
         spatial_ref = arcpy.Describe(buildings).spatialReference
         arcpy.Project_management(garage_points, gdb_path + '\Garage_Points_reprojected', spatial_ref)
 
-        buffer_distance = int(parameters[5].value)
+        buffer_distance = float(parameters[5].value)
         garageBuffered = arcpy.Buffer_analysis(gdb_path + '\Garage_Points_reprojected', gdb_path + '\Garage_Points_buffered', 150)
         
         arcpy.Intersect_analysis([garageBuffered, buildings], gdb_path + '\Garage_Buildings_Intersection', 'ALL')
