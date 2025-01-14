@@ -6,7 +6,7 @@ band1 = arcpy.sa.Raster(source + r"\band1.tif") #blue
 band2 = arcpy.sa.Raster(source + r"\band1.tif") #green
 band3 = arcpy.sa.Raster(source + r"\band1.tif") #red
 band4 = arcpy.sa.Raster(source + r"\band1.tif") #NIR
-combined = arcpy.CompositeBands_management([band1, band2, band3, band4], source + r"\ourput_combined.tif")
+combined = arcpy.CompositeBands_management([band1, band2, band3, band4], source + r"\output_combined.tif")
 
 # Hillshade
 azimuth = 315
